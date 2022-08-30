@@ -1,4 +1,9 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/home.dart';
+import 'package:flutter_application_1/screens/login.dart';
+import 'package:flutter_application_1/state/provider.dart';
+import 'package:provider/provider.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -10,23 +15,26 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
+    final isDark = Provider.of<ThemeManagement>(context).isDark;
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           brightness: Brightness.light,
           fontFamily: "SF-Pro-Text",
           backgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(backgroundColor: Color(0xffFAFAFA)),
           colorScheme: ColorScheme(
               brightness: Brightness.light,
               primary: Colors.black,
-              secondary: Colors.green,
-              onSecondary: Colors.purple,
+              outline: Color(0xffA6A6AA).withOpacity(0.3),
               onPrimary: Colors.white,
+              secondary: Colors.white,
+              onSecondary: Colors.purple,
               error: Colors.red,
               onError: Colors.red,
               onBackground: Colors.white,
               background: Colors.white,
-              surface: Colors.pink,
+              surface: Colors.black.withOpacity(0.4),
               onPrimaryContainer: const Color(0xffFAFAFA),
               onSurface: Colors.black.withOpacity(0.04)),
         ),
@@ -34,21 +42,23 @@ class _InitialScreenState extends State<InitialScreen> {
             brightness: Brightness.dark,
             fontFamily: "SF-Pro-Text",
             backgroundColor: Colors.black,
+            appBarTheme: AppBarTheme(color: Color(0xff121212)),
             colorScheme: ColorScheme(
                 brightness: Brightness.dark,
+                outline: Color(0xffFFFFFF).withOpacity(0.1),
                 primary: Colors.white,
-                secondary: Colors.green,
+                onPrimary: Colors.black,
+                secondary: Colors.white,
                 onSecondary: Colors.purple,
-                onPrimary: Colors.white,
                 error: Colors.red,
                 onError: Colors.red,
                 onBackground: Colors.white,
                 background: Colors.white,
                 onPrimaryContainer: const Color(0xff121212),
-                surface: Colors.pink,
+                surface: Colors.white.withOpacity(0.7),
                 onSurface: Colors.white.withOpacity(0.08))),
-        themeMode: ThemeMode.light,
-        home: const SplashScreen());
+        themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+        home: const LoginScreen());
   }
 }
 
@@ -62,76 +72,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image(
-                  image: const AssetImage("assets/images/logo.png"),
-                  width: 150,
-                  color: Theme.of(context).colorScheme.primary),
-              const SizedBox(
-                height: 40,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Container(
-                      height: 44,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.onSurface),
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Container(
-                      height: 44,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.onSurface),
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
-                          borderRadius: BorderRadius.circular(5)),
-                    ),
-                    const SizedBox(
-                      height: 19,
-                    ),
-                    const Text(
-                      "Forgot Password?",
-                      style: TextStyle(color: Color(0xff3797EF)),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                width: MediaQuery.of(context).size.width,
-                alignment: Alignment.center,
-                height: 44,
-                decoration: BoxDecoration(
-                    color: Color(0xff3797EF),
-                    borderRadius: BorderRadius.circular(5)),
-                child: const Text(
-                  "Log in",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return const Scaffold();
   }
 }
