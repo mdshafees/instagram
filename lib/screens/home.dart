@@ -84,13 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: 2,
+              itemCount: images.length,
               itemBuilder: (context, index) {
                 return Column(children: [
                   const PostHeader(),
-                  const Image(
-                    image: NetworkImage(
-                        "https://i.picsum.photos/id/1055/5472/3648.jpg?hmac=1c293cGVlNouNQsjxT8y3nsYO-7qLCaOBEGvih0ibEU"),
+                  Image(
+                    image: NetworkImage(images[index]),
                   ),
                   PostFooter(theme: theme),
                   PostCommentSection(theme: theme),
@@ -103,4 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  List images = [
+    "https://i.picsum.photos/id/1055/5472/3648.jpg?hmac=1c293cGVlNouNQsjxT8y3nsYO-7qLCaOBEGvih0ibEU",
+    "https://picsum.photos/300/300/?blur"
+  ];
 }
