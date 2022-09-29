@@ -78,6 +78,13 @@ class PostCommentSection extends StatelessWidget {
             "View all 22 comments",
             style: TextStyle(color: Colors.grey.shade600),
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: spacing, right: spacing, top: 8),
+          child: Text(
+            "2 hours ago",
+            style: TextStyle(color: Colors.grey.shade600, fontSize: 10),
+          ),
         )
       ],
     );

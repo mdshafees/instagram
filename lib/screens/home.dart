@@ -19,12 +19,67 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var selectedTab = 0;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: theme.onPrimary,
+      bottomNavigationBar: Container(
+          height: 70,
+          decoration: BoxDecoration(
+              border: Border(
+                  top: BorderSide(color: Colors.black.withOpacity(0.2)))),
+          padding: EdgeInsets.only(bottom: spacing),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BottomIcon(
+                image: 'assets/images/home.png',
+                selectedImage: "assets/images/homeFill.png",
+                isSelected: selectedTab == 0,
+                callbackAction: () {
+                  selectedTab = 0;
+                  setState(() {});
+                },
+              ),
+              BottomIcon(
+                image: 'assets/images/search.png',
+                selectedImage: "assets/images/searchFill.png",
+                isSelected: selectedTab == 1,
+                callbackAction: () {
+                  selectedTab = 1;
+                  setState(() {});
+                },
+              ),
+              BottomIcon(
+                image: 'assets/images/add.png',
+                isSelected: selectedTab == 2,
+                callbackAction: () {
+                  selectedTab = 2;
+                  setState(() {});
+                },
+              ),
+              BottomIcon(
+                image: 'assets/images/Like.png',
+                selectedImage: "assets/images/likeFill.png",
+                isSelected: selectedTab == 3,
+                callbackAction: () {
+                  selectedTab = 3;
+                  setState(() {});
+                },
+              ),
+              BottomIcon(
+                image: 'assets/images/Comment.png',
+                isSelected: selectedTab == 4,
+                callbackAction: () {
+                  selectedTab = 4;
+                  setState(() {});
+                },
+              ),
+            ],
+          )),
       appBar: AppBar(
         centerTitle: true,
         leading: InkWell(
@@ -107,4 +162,34 @@ class _HomeScreenState extends State<HomeScreen> {
     "https://i.picsum.photos/id/1055/5472/3648.jpg?hmac=1c293cGVlNouNQsjxT8y3nsYO-7qLCaOBEGvih0ibEU",
     "https://picsum.photos/300/300/?blur"
   ];
+}
+
+class BottomIcon extends StatelessWidget {
+  BottomIcon(
+      {super.key,
+      required this.image,
+      this.selectedImage,
+      required this.callbackAction,
+      required this.isSelected});
+  String image;
+  VoidCallback callbackAction;
+  String? selectedImage;
+  bool isSelected;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: InkWell(
+      onTap: () {
+        callbackAction();
+      },
+      child: Container(
+        height: 70,
+        padding: const EdgeInsets.all(spacing * 1.5),
+        child: Image(
+          image: AssetImage(isSelected ? selectedImage ?? image : image),
+          color: Theme.of(context).colorScheme.primary,
+        ),
+      ),
+    ));
+  }
 }

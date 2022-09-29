@@ -13,7 +13,7 @@ class PostFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(spacing),
+      margin: const EdgeInsets.all(spacing).copyWith(top: 13),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,7 +28,7 @@ class PostFooter extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 12,
+                width: 18,
               ),
               SizedBox(
                 height: 27,
@@ -39,7 +39,7 @@ class PostFooter extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 12,
+                width: 18,
               ),
               SizedBox(
                 height: 27,
