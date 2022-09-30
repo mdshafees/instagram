@@ -19,67 +19,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var selectedTab = 0;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: theme.onPrimary,
-      bottomNavigationBar: Container(
-          height: 70,
-          decoration: BoxDecoration(
-              border: Border(
-                  top: BorderSide(color: Colors.black.withOpacity(0.2)))),
-          padding: EdgeInsets.only(bottom: spacing),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              BottomIcon(
-                image: 'assets/images/home.png',
-                selectedImage: "assets/images/homeFill.png",
-                isSelected: selectedTab == 0,
-                callbackAction: () {
-                  selectedTab = 0;
-                  setState(() {});
-                },
-              ),
-              BottomIcon(
-                image: 'assets/images/search.png',
-                selectedImage: "assets/images/searchFill.png",
-                isSelected: selectedTab == 1,
-                callbackAction: () {
-                  selectedTab = 1;
-                  setState(() {});
-                },
-              ),
-              BottomIcon(
-                image: 'assets/images/add.png',
-                isSelected: selectedTab == 2,
-                callbackAction: () {
-                  selectedTab = 2;
-                  setState(() {});
-                },
-              ),
-              BottomIcon(
-                image: 'assets/images/Like.png',
-                selectedImage: "assets/images/likeFill.png",
-                isSelected: selectedTab == 3,
-                callbackAction: () {
-                  selectedTab = 3;
-                  setState(() {});
-                },
-              ),
-              BottomIcon(
-                image: 'assets/images/Comment.png',
-                isSelected: selectedTab == 4,
-                callbackAction: () {
-                  selectedTab = 4;
-                  setState(() {});
-                },
-              ),
-            ],
-          )),
       appBar: AppBar(
         centerTitle: true,
         leading: InkWell(
