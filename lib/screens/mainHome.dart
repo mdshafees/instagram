@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/helpers/constants.dart';
+import 'package:flutter_application_1/screens/profile.dart';
 
 import 'home.dart';
 
@@ -35,12 +36,10 @@ class _MainHomeState extends State<MainHome> {
             Container(
               color: Colors.black,
             ),
-            Container(
-              color: Colors.black,
-            ),
+            const ProfileScreen()
           ]),
       bottomNavigationBar: Container(
-          height: 70,
+          height: 66,
           decoration: BoxDecoration(
               border: Border(
                   top: BorderSide(color: Colors.black.withOpacity(0.2)))),

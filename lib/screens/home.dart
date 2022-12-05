@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List images = [
     "https://i.picsum.photos/id/1055/5472/3648.jpg?hmac=1c293cGVlNouNQsjxT8y3nsYO-7qLCaOBEGvih0ibEU",
-    "https://picsum.photos/300/300/?blur"
+    "https://picsum.photos/300/300/"
   ];
 }
 
